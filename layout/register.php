@@ -7,17 +7,17 @@
     <title>Register - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=39f612d0af5b74e3058ab6d89e114e6a">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css?h=6e391fdbaed371923dc3c89cf1024f68">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=eb3772a3b0c90f0f09d3ba9281a77e5f">
 </head>
 
-<body class="bg-gradient-primary">
-    <div class="container">
+<body class="bg-gradient-primary" style="background: #40edaf;">
+    <div class="container" style="background: #40edaf;">
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
                         <div class="flex-grow-1 bg-register-image"
-                            style="background-image: url(&quot;assets/img/dogs/image2.jpeg?h=a0a7d00bcd8e4f84f4d8ce636a8f94d4&quot;);">
+                            style="background: url(&quot;https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg'&quot;) center / cover no-repeat;">
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -45,15 +45,16 @@
                                             name="password_repeat"></div>
                                 </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Register
                                     Account</button>
-                                <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i
-                                        class="fab fa-google"></i>&nbsp; Register with Google</a><a
-                                    class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i
-                                        class="fab fa-facebook-f"></i>&nbsp; Register with Facebook</a>
+                                <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"
+                                    style="background: rgb(0,0,0);"><i class="fab fa-google"></i>&nbsp; Register with
+                                    Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100"
+                                    role="button" style="background: #3b5998;"><i class="fab fa-facebook-f"></i>&nbsp;
+                                    Register with Facebook</a>
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a>
+                            <div class="text-center"><a class="small" href="forgot-password.php">Forgot Password?</a>
                             </div>
-                            <div class="text-center"><a class="small" href="login.html">Already have an account?
+                            <div class="text-center"><a class="small" href="login.php">Already have an account?
                                     Login!</a></div>
                         </div>
                     </div>

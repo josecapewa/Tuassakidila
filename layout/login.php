@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+<html data-bs-theme="light" lang="en" style="background: #40edaf;">
 
 <head>
     <meta charset="utf-8">
@@ -7,19 +7,19 @@
     <title>Login - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=39f612d0af5b74e3058ab6d89e114e6a">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css?h=6e391fdbaed371923dc3c89cf1024f68">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=eb3772a3b0c90f0f09d3ba9281a77e5f">
 </head>
 
-<body class="bg-gradient-primary">
-    <div class="container">
-        <div class="row justify-content-center">
+<body class="bg-gradient-primary" style="background: #40edaf;">
+    <div class="container" style="background: #40edaf;">
+        <div class="row justify-content-center" style="background: #40edaf;">
             <div class="col-md-9 col-lg-12 col-xl-10">
                 <div class="card shadow-lg o-hidden border-0 my-5">
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-flex">
                                 <div class="flex-grow-1 bg-login-image"
-                                    style="background-image: url(&quot;assets/img/dogs/image3.jpeg?h=cbc3a40dae521ddee89bf6b026abde71&quot;);">
+                                    style="background: url(;https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg'&quot;) center / cover;opacity: 0.93;filter: blur(0px);">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -42,14 +42,16 @@
                                         </div><button class="btn btn-primary d-block btn-user w-100"
                                             type="submit">Login</button>
                                         <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2"
-                                            role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a><a
-                                            class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i
-                                                class="fab fa-facebook-f"></i>&nbsp; Login with Facebook</a>
+                                            role="button" style="background: rgb(0,0,0);"><i
+                                                class="fab fa-google"></i>&nbsp; Login with Google</a><a
+                                            class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"
+                                            style="background: #3b5998;"><i class="fab fa-facebook-f"></i>&nbsp; Login
+                                            with Facebook</a>
                                         <hr>
                                     </form>
-                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot
+                                    <div class="text-center"><a class="small" href="forgot-password.php">Forgot
                                             Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register.html">Create an
+                                    <div class="text-center"><a class="small" href="register.php">Create an
                                             Account!</a></div>
                                 </div>
                             </div>

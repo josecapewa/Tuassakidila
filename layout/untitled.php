@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Tuassakidila</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=39f612d0af5b74e3058ab6d89e114e6a">
-    <link rel="stylesheet" href="assets/css/styles.min.css?h=6e391fdbaed371923dc3c89cf1024f68">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=eb3772a3b0c90f0f09d3ba9281a77e5f">
 </head>
 
 <body>
