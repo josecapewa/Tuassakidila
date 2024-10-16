@@ -1,0 +1,14 @@
+Dados necessários para usuários:
+	Nome
+	Email
+    Email de Recuperação
+    Número de telefone
+    Morada
+    	País
+        Província
+        Municipio
+        Comuna
+        Bairro
+    Pontos
+    Senha
+    
