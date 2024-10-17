@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-flex">
                                 <div class="flex-grow-1 bg-login-image"
-                                    style="background: url(;https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg'&quot;) center / cover;opacity: 0.93;filter: blur(0px);">
+                                    style="background: url('https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg') center / cover;opacity: 0.93;filter: blur(0px);">
                                 </div>
                             </div>
                             <div class="col-lg-6">

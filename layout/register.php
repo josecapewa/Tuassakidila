@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
                         <div class="flex-grow-1 bg-register-image"
-                            style="background: url(&quot;https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg'&quot;) center / cover no-repeat;">
+                            style="background: url(&quot;https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg&quot;) center / cover no-repeat;">
                         </div>
                     </div>
                     <div class="col-lg-7">
