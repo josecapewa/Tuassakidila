@@ -15,6 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo "<script>alert('Por favor, preencha todos os campos obrigatórios!')</script>";
     }
 
+    if(empty($recuperation_email)){
+        $recuperation_email = $email;
+    }
+
     if ($password != $password_repeat) {
         echo "<script>alert('As senhas não coincidem!')</script>";
     }
@@ -28,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$password'";
             $return = $db->query($sql);
             if($db->num_rows($return)){
-                $_SESSION['user'] = $db->fetch_assoc($return);
+                $user = $db->fetch_assoc($return);
+                $session->login($user['id']);
             }
             header("Location: index.php");
         }else{

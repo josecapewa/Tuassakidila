@@ -55,4 +55,3 @@
 
     $session = new Session();
     $msg = $session->msg();
-?>
