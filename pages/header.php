@@ -1,7 +1,8 @@
 <?php
-	session_start();
-	$user = $_SESSION['user'];
+require_once('../includes/load.php');
+	$user = getUser($_SESSION['user_id']);
 
+    $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +26,11 @@
 				</a>
 				<hr class="sidebar-divider my-0">
 				<ul class="navbar-nav text-light" id="accordionSidebar">
-					<li class="nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="profile.php"><i class="fas fa-user"></i><span>Profile</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="table.php"><i class="fas fa-table"></i><span>Table</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="login.php"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="register.php"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Profile</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'table.php') ? 'active' : ''; ?>" href="table.php"><i class="fas fa-table"></i><span>Table</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'login.php') ? 'active' : ''; ?>" href="login.php"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'register.php') ? 'active' : ''; ?>" href="register.php"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
 				</ul>
 				<div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
 			</div>
