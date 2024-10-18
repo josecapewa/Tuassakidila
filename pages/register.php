@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 require_once("../includes/load.php");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $first_name = $_POST['first_name'];
@@ -23,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $sql = "INSERT INTO usuario (nome, email, email_recuperacao, senha, rf_id) VALUES ('$name', '$email', '$recuperation_email', '$password', '$random')";
         
         if($result = $db->query($sql)){
+            $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$password'";
+            $return = $db->query($sql);
+            if($db->num_rows($return)){
+                $_SESSION['user'] = $db->fetch_assoc($return);
+            }
             header("Location: index.php");
         }else{
             echo "<script>alert('Erro ao criar conta!')</script>";
