@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                         <div class="text-center">
                                             <h4 class="text-dark mb-4">Boas Vindas!</h4>
                                         </div>
-                                        <form action="profile.php" class="user" method="POST">
+                                        <form action="login.php" class="user" method="POST">
                                             <div class="mb-3"><input class="form-control form-control-user" type="email"
                                                     id="exampleInputEmail" aria-describedby="emailHelp"
                                                     placeholder="Insira o email..." name="email"></div>
