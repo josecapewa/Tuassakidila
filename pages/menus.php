@@ -1,5 +1,5 @@
 <?php
-    include("head.php");
+include("head.php");
 $user = getUser($_SESSION['user_id']);
 ?>
 
@@ -12,18 +12,19 @@ $user = getUser($_SESSION['user_id']);
 				</a>
 				<hr class="sidebar-divider my-0">
 				<ul class="navbar-nav text-light" id="accordionSidebar">
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Profile</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'table.php') ? 'active' : ''; ?>" href="table.php"><i class="fas fa-table"></i><span>Table</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'login.php') ? 'active' : ''; ?>" href="login.php"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'register.php') ? 'active' : ''; ?>" href="register.php"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Início</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'table.php') ? 'active' : ''; ?>" href="table.php"><i class="fas fa-table"></i><span>Trocas</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>" href="users.php"><i class="fas fa-users"></i><span>Usuários</span></a></li>
+
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'register.php') ? 'active' : ''; ?>" href="register.php"><i class="fas fa-user-circle"></i><span>Registrar</span></a></li>
 				</ul>
 				<div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
 			</div>
 		</nav>
-        <div class="d-flex flex-column" id="content-wrapper">
+		<div class="d-flex flex-column" id="content-wrapper">
 			<div id="content">
-				<nav class="navbar navbar-expand bg-white shadow mb-4 topbar">
+				<nav class=" navbar navbar-expand bg-white shadow mb-4 topbar">
 					<div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
 						<form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
 							<div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." style="filter: brightness(83%);"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
@@ -92,7 +93,7 @@ $user = getUser($_SESSION['user_id']);
 							</li>
 							<div class="d-none d-sm-block topbar-divider"></div>
 							<li class="nav-item dropdown no-arrow">
-								<div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo $user['nome']?></span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg?h=0ecc82101fb9a10ca459432faa8c0656"></a>
+								<div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo $user['nome'] ?></span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg?h=0ecc82101fb9a10ca459432faa8c0656"></a>
 									<div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>Perfil</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>Definições</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>Registo de Actividades</a>
 										<div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>Logout</a>
 									</div>

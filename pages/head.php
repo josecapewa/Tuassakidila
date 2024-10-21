@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('../includes/load.php');
 
 $current_page = basename($_SERVER['PHP_SELF']);
