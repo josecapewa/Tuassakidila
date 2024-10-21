@@ -26,7 +26,7 @@ if(isset($_POST['save_contact']) && $_SERVER['REQUEST_METHOD']=='POST'){
 
 ?>
 
-<?php include("header.php")?>
+<?php include("menus.php")?>
 				<div class="container-fluid">
 					<h3 class="text-dark mb-4">Perfil</h3>
 					<div class="row mb-3">

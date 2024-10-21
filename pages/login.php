@@ -1,6 +1,24 @@
 <?php
-    include("head.php");
+    require_once('../includes/load.php');
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        $email = isset($_POST['email']) ? $_POST['email'] : '';
+        $password = isset($_POST['password']) ? $_POST['password'] : '';
+        if(!empty($email) && !empty($password)){
+            if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$password'";
+                $result = $db->query($sql);
+                if($db->num_rows($result)){
+                    $user = $db->fetch_assoc($result);
+                    $session->login($user['id']);
+                    header('location: index.php');
+                }
+            }
+        }
+    }
+
 ?>
+
+<?php include("head.php"); ?>
 
 <body class="bg-gradient-primary" style="background: #40edaf;">
     <div class="container" style="background: #40edaf;">
@@ -19,7 +37,7 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Boas Vindas!</h4>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post">
                                         <div class="mb-3"><input class="form-control form-control-user" type="email"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Insira o email..." name="email"></div>
