@@ -17,7 +17,7 @@ $total_paginas = ceil($total_registros / $registros_por_pagina);
 $users = array_slice($users, $inicio, $registros_por_pagina);
 ?>
 <?php include("menus.php") ?>
-<div class="container-fluid">
+<div class="container-fluid ">
     <h3 class="text-dark mb-4">Usuários</h3>
     <div class="card shadow">
         <div class="card-header py-3">
@@ -68,7 +68,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                                     <button class="btn btn-info btn-sm editBtn" data-id="' . $rf_id . '" style="
                                             background-color: #4FB8FC;
                                             color: #fff;">Editar</button>
-                                    <button class="btn btn-danger btn-sm deleteBtn" data-id="' . $rf_id . '">Deletar</button>
+                                    <button class="btn btn-danger btn-sm deleteBtn" data-toggle="modal" data-target="#deleteModal" data-id="' . $rf_id . '" >Deletar</button>
                                 </td>
                             </tr>');
                         }
@@ -84,18 +84,18 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                         <ul class="pagination">
                             <?php
-                            
+
                             $pagina_atual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 
                             $inicio = max(1, $pagina_atual - 1);
-                            $fim = min($inicio + 2, $total_paginas); 
-                            
+                            $fim = min($inicio + 2, $total_paginas);
+
                             if ($pagina_atual > 1) {
                                 echo '<li class="page-item"><a class="page-next" aria-label="Previous" href="?pagina=' . ($pagina_atual - 1) . '"><span aria-hidden="true">«</span></a></li>';
                             } else {
                                 echo '<li class="page-item disabled"><a class="page-next" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>';
                             }
-                            
+
                             for ($i = $inicio; $i <= $fim; $i++) {
                                 if ($i == $pagina_atual) {
                                     echo '<li class="page-item active"><a class="page-next" href="#" style="background-color: #027D51; color: white;">' . $i . '</a></li>';
@@ -115,35 +115,60 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 </div>
             </div>
         </div>
-  
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function changeRecordsPerPage() {
-        var recordsPerPage = $('#recordsPerPage').val();
-        loadUsers(1, recordsPerPage); // Reset to page 1
-    }
 
-    $(document).on('click', '.pagination .page-link', function(e) {
-        e.preventDefault();
-        var page = $(this).data('page');
-        var recordsPerPage = $('#recordsPerPage').val();
-        loadUsers(page, recordsPerPage);
-    });
+        <div class="modal fade"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="deleteModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Aviso!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que pretende deletar este usuario?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    function loadUsers(page, recordsPerPage) {
-        $.ajax({
-            url: 'fetch_users.php', // New PHP file to handle the AJAX request
-            type: 'GET',
-            data: {
-                pagina: page,
-                registros_por_pagina: recordsPerPage
-            },
-            success: function(data) {
-                $('#userTable tbody').html(data);
-                // Update pagination or other info if needed
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function changeRecordsPerPage() {
+                var recordsPerPage = $('#recordsPerPage').val();
+                loadUsers(1, recordsPerPage); // Reset to page 1
             }
-        });
-    }
-</script>
 
-<?php include("footer.php") ?>
+            $(document).on('click', '.pagination .page-link', function(e) {
+                e.preventDefault();
+                var page = $(this).data('page');
+                var recordsPerPage = $('#recordsPerPage').val();
+                loadUsers(page, recordsPerPage);
+            });
+
+            function loadUsers(page, recordsPerPage) {
+                $.ajax({
+                    url: 'fetch_users.php', // New PHP file to handle the AJAX request
+                    type: 'GET',
+                    data: {
+                        pagina: page,
+                        registros_por_pagina: recordsPerPage
+                    },
+                    success: function(data) {
+                        $('#userTable tbody').html(data);
+                        // Update pagination or other info if needed
+                    }
+                });
+            }
+            $(document).on('click', '.deleteBtn', function() {
+                var userId = $(this).data('id');
+                // Aqui você pode definir a imagem que deseja mostrar
+                $('#modal-image').attr('src', 'caminho/para/a/imagem/' + userId + '.jpeg');
+                $('#deleteModal').modal('show'); // Abre o modal
+            });
+        </script>
+
+        <?php include("footer.php") ?>
