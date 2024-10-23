@@ -21,10 +21,8 @@ foreach ($users as $user) {
         <td>' . $user['email_recuperacao'] . '</td>
         <td>' . $ponto . '</td>
         <td>
-            <button class="btn btn-primary btn-sm editBtn" data-id="' . $rf_id . '" style="
-                                            background-color: #4FB8FC;
-                                            color: #fff;">Editar</button>
-            <button class="btn btn-danger btn-sm deleteBtn" data-id="' . $rf_id . '">Deletar</button>
+            <button class="btn btnE btn-sm editBtn" data-id="' . $rf_id . '"">Editar</button>
+            <button class="btn btn-danger btn-sm deleteBtn btnD" data-id="' . $rf_id . '">Deletar</button>
         </td>
     </tr>');
 }

@@ -667,3 +667,49 @@
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #027d51
 }
+
+.btnE {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    width: 65px;
+    height: 25px;
+    margin: 2px 0px
+}
+
+.btnE:hover {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #174d87cf;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    width: 65px;
+    height: 25px;
+    margin: 2px 0px
+}
+
+.btnD {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    width: 65px;
+    height: 25px;
+    margin: 2px 0px
+
+}
