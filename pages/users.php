@@ -68,7 +68,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                                     <button class="btn btn-info btn-sm editBtn" data-id="' . $rf_id . '" style="
                                             background-color: #4FB8FC;
                                             color: #fff;">Editar</button>
-                                    <button class="btn btn-danger btn-sm deleteBtn" data-toggle="modal" data-target="#deleteModal" data-id="' . $rf_id . '" >Deletar</button>
+                                    <button class="btn btn-danger btn-sm deleteBtn" data-toggle="modal" data-target="#deleteModal" data-id="' . $user['id'] . '" >Deletar</button>
                                 </td>
                             </tr>');
                         }
@@ -115,8 +115,9 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 </div>
             </div>
         </div>
+        
 
-        <div class="modal fade"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="deleteModal">
+        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="deleteModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -126,13 +127,15 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     <div class="modal-body">
                         Tem certeza que pretende deletar este usuario?
                     </div>
-                    <div class="modal-footer">
+                    <form class="modal-footer" action="delete_user.php" method="post">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger">Confirmar</button>
-                    </div>
+                        <button type="submit" class="btn btn-danger" name="delete_user">Confirmar</button>
+                        <input type="text" id="delete_data" name="id" value="" hidden>
+                    </form>
                 </div>
             </div>
         </div>
+        
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -165,9 +168,8 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
             }
             $(document).on('click', '.deleteBtn', function() {
                 var userId = $(this).data('id');
-                // Aqui você pode definir a imagem que deseja mostrar
-                $('#modal-image').attr('src', 'caminho/para/a/imagem/' + userId + '.jpeg');
-                $('#deleteModal').modal('show'); // Abre o modal
+                $('#delete_data').attr('value', userId);
+                $('#deleteModal').modal('show');
             });
         </script>
 
