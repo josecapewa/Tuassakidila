@@ -668,6 +668,10 @@
     --bs-btn-disabled-border-color: #027d51
 }
 
+td{
+    background-color: red;
+}
+
 .btnE {
     display: inline-block;
     padding: 5px 10px;

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo "<script>alert('Por favor, preencha todos os campos obrigatórios!')</script>";
     }
 
-    if(empty($recuperation_email)){
+    if (empty($recuperation_email)) {
         $recuperation_email = $email;
     }
 
@@ -22,40 +22,38 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     $random = rand(0, 100);
 
-    if(isset($first_name) && isset($last_name) && isset($email) && isset($password) && isset($password_repeat)){
+    if (isset($first_name) && isset($last_name) && isset($email) && isset($password) && isset($password_repeat)) {
         $name = $first_name . " " . $last_name;
         $sql = "INSERT INTO usuario (nome, email, email_recuperacao, senha, rf_id) VALUES ('$name', '$email', '$recuperation_email', '$password', '$random')";
-        
-        if($result = $db->query($sql)){
+
+        if ($result = $db->query($sql)) {
             $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$password'";
             $return = $db->query($sql);
-            if($db->num_rows($return)){
+            if ($db->num_rows($return)) {
                 $user = $db->fetch_assoc($return);
                 $session->login($user['id']);
             }
             header("Location: index.php");
-        }else{
+        } else {
             echo "<script>alert('Erro ao criar conta!')</script>";
         }
     }
-
-
 }
 
 ?>
 
 <?php
-    include("head.php");
+include("head.php");
 ?>
 
-<body class="bg-gradient-primary" style="background: #40edaf;">
-    <div class="container" style="background: #40edaf;">
+<body style="display:flex; background: #386641; justify-content:center; align-items:center; height:100vh ;">
+    <div class="container">
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image"
-                            style="background: url(&quot;https://www.cicnews.com/wp-content/uploads/2020/03/20200305NigerianStudents-1.jpg&quot;) center / cover no-repeat;">
+                        <div class="flex-grow-1 bg-login-image"
+                            style="background: url('./assets/img/recycling.jpg') center / cover; filter: blur(0px);">
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -65,32 +63,43 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             </div>
                             <form class="user" method="post">
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" style="border-radius: 10px; height:40px"
                                             type="text" id="exampleFirstName" placeholder="Primeiro Nome*"
                                             name="first_name" required></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text"
-                                            id="exampleLastName" placeholder="Último Nome*" name="last_name"  required></div>
+                                    <div class="col-sm-6"><input class="form-control" style="border-radius: 10px; height:40px" type="text"
+                                            id="exampleLastName" placeholder="Último Nome*" name="last_name" required></div>
                                 </div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email"
+                                <div class="mb-3"><input class="form-control" style="border-radius: 10px; height:40px" type="email"
                                         id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email*"
                                         name="email" required></div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email"
+                                <div class="mb-3"><input class="form-control" style="border-radius: 10px; height:40px" type="email"
                                         aria-describedby="recuperationEmailHelp" placeholder="Email de Recuperação"
                                         name="recuperation_email"></div>
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" style="border-radius: 10px; height:40px"
                                             type="password" id="examplePasswordInput" placeholder="Password*"
                                             name="password" required></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password"
+                                    <div class="col-sm-6"><input class="form-control" style="border-radius: 10px; height:40px" type="password"
                                             id="exampleRepeatPasswordInput" placeholder="Confirmar Password*"
                                             name="password_repeat" required></div>
-                                </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Registar Conta</button>
-                                <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"
-                                    style="background: rgb(0,0,0);"><i class="fab fa-google"></i> Registar com o Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100"
-                                    role="button" style="background: #3b5998;"><i class="fab fa-facebook-f"></i>Registar com Facebook</a>
+                                </div><button class="btn btn-primary d-block btn-user w-100" style="border-radius: 10px" type="submit">Registar Conta</button>
+                                <hr>
+                                <div style="display: flex; gap:10px; justify-content:center;">
+                                    <article>
+                                        <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2"
+                                            role="button" style="background: rgb(0,0,0); border-color:rgb(0,0,0); border-radius: 10px"><i
+                                                class="fab fa-google"></i>&nbsp; Login with Google</a>
+                                    </article>
+                                    <article>
+                                        <a
+                                            class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"
+                                            style="background: #3b5998; border-color:#3b5998; border-radius: 10px"><i class="fab fa-facebook-f"></i>&nbsp; Login
+                                            with Facebook</a>
+                                    </article>
+                                </div>
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small" href="login.php">Já possui uma conta?
+                            <div class="text-center"><a class="small"  style="text-decoration: none;" href="login.php">Já Possui ima Conta?
                                     Login!</a></div>
                         </div>
                     </div>

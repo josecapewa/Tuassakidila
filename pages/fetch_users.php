@@ -18,7 +18,6 @@ foreach ($users as $user) {
         <td>' . $rf_id . '</td>
         <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">' . $user['nome'] . '</td>
         <td>' . $user['email'] . '</td>
-        <td>' . $user['email_recuperacao'] . '</td>
         <td>' . $ponto . '</td>
         <td>
             <button class="btn btnE btn-sm editBtn" data-id="' . $rf_id . '"">Editar</button>

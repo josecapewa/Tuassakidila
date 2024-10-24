@@ -39,19 +39,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                             <h4 class="text-dark mb-4">Boas Vindas!</h4>
                                         </div>
                                         <form action="login.php" class="user" method="POST">
-                                            <div class="mb-3"><input class="form-control form-control-user" type="email"
+                                            <div class="mb-3"><input class="form-control " style="border-radius: 10px; height:40px" type="email"
                                                     id="exampleInputEmail" aria-describedby="emailHelp"
                                                     placeholder="Insira o email..." name="email"></div>
-                                            <div class="mb-3"><input class="form-control form-control-user" type="password"
+                                            <div class="mb-3"><input class="form-control " style="border-radius: 10px; height:40px" type="password"
                                                     id="exampleInputPassword" placeholder="Password" name="password"></div>
                                             <button class="btn btn-primary d-block btn-user w-100"
-                                                type="submit">Login</button>
-                                            <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2"
-                                                role="button" style="background: rgb(0,0,0);"><i
-                                                    class="fab fa-google"></i>&nbsp; Login with Google</a><a
-                                                class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"
-                                                style="background: #3b5998;"><i class="fab fa-facebook-f"></i>&nbsp; Login
-                                                with Facebook</a>
+                                                style="border-radius: 10px" type="submit">Login</button>
+                                            <hr>
+                                            <div style="display: flex; gap:10px; justify-content:center;">
+                                                <article>
+                                                    <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2"
+                                                        role="button" style="background: rgb(0,0,0); border-color:rgb(0,0,0); border-radius: 10px"><i
+                                                            class="fab fa-google"></i>&nbsp; Login with Google</a>
+                                                </article>
+                                                <article>
+                                                    <a
+                                                        class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"
+                                                        style="background: #3b5998; border-color:#3b5998; border-radius: 10px"><i class="fab fa-facebook-f"></i>&nbsp; Login
+                                                        with Facebook</a>
+                                                </article>
+                                            </div>
                                             <hr>
                                         </form>
                                         <div class="text-center"><a class="small" style="text-decoration: none;" href="forgot-password.php">Esqueceu a Senha?</a></div>
