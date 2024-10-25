@@ -23,6 +23,26 @@ if(isset($_POST['save_contact']) && $_SERVER['REQUEST_METHOD']=='POST'){
 
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+    $photo = new Media();
+    if (isset($_FILES['file_upload']) && $_FILES['file_upload']['error'] === UPLOAD_ERR_OK) {
+        $user_id = (int)$_POST['user_id'];
+        try {
+            if ($photo->upload($_FILES['file_upload']) && $photo->process_user($user_id)) {
+                $session->msg("d", "Falha ao atualizar a foto.");
+            } else {
+                $session->msg("s", "Foto atualizada com sucesso!");
+            }
+        } catch (RuntimeException $e) {
+            $session->msg("d", "Erro: " . $e->getMessage());
+        }
+    } else {
+        $session->msg("d", "Erro ao enviar o arquivo. Verifique o tamanho do arquivo e tente novamente.");
+    }
+    header("Location: edit_profile.php");
+    exit();
+}
+
 
 ?>
 
@@ -35,7 +55,36 @@ if(isset($_POST['save_contact']) && $_SERVER['REQUEST_METHOD']=='POST'){
 								<div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
 										src="assets/img/dogs/image2.jpeg?h=a0a7d00bcd8e4f84f4d8ce636a8f94d4" width="160"
 										height="160">
-									<div class="mt-3 mb-3"><button class="btn btn-primary btn-sm" type="button">Alterar Foto</button></div>
+									<div class="mt-3 mb-3"><div>
+  <input class="form-control form-control-lg" id="formFileLg" type="file" style="display: none;" onchange="updateFileName()">
+  <button type="button" class="custom-button" onclick="document.getElementById('formFileLg').click();">
+    Selecionar arquivo
+  </button>
+</div>
+
+<style>
+.custom-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
+</style>
+
+<script>
+function updateFileName() {
+  const input = document.getElementById('formFileLg');
+  const fileName = document.getElementById('fileName');
+  fileName.textContent = input.files.length > 0 ? input.files[0].name : 'Nenhum arquivo selecionado';
+}
+</script>
+</div>
 								</div>
 							</div>
 							<div class="card shadow mb-4">

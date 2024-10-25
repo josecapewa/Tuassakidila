@@ -28,17 +28,24 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 <div class="col-md-6 text-nowrap">
                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
                         <label class="form-label">Mostrar&nbsp;
-                            <select class="d-inline-block form-select form-select-sm" id="recordsPerPage" name="registros_por_pagina" onchange="changeRecordsPerPage()">
-                                <option value="10" <?php echo ($registros_por_pagina == 10) ? 'selected' : ''; ?>>10</option>
-                                <option value="25" <?php echo ($registros_por_pagina == 25) ? 'selected' : ''; ?>>25</option>
-                                <option value="50" <?php echo ($registros_por_pagina == 50) ? 'selected' : ''; ?>>50</option>
-                                <option value="100" <?php echo ($registros_por_pagina == 100) ? 'selected' : ''; ?>>100</option>
+                            <select class="d-inline-block form-select form-select-sm" id="recordsPerPage"
+                                name="registros_por_pagina" onchange="changeRecordsPerPage()">
+                                <option value="10" <?php echo ($registros_por_pagina == 10) ? 'selected' : ''; ?>>10
+                                </option>
+                                <option value="25" <?php echo ($registros_por_pagina == 25) ? 'selected' : ''; ?>>25
+                                </option>
+                                <option value="50" <?php echo ($registros_por_pagina == 50) ? 'selected' : ''; ?>>50
+                                </option>
+                                <option value="100" <?php echo ($registros_por_pagina == 100) ? 'selected' : ''; ?>>100
+                                </option>
                             </select>&nbsp;
                         </label>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input
+                                type="search" class="form-control form-control-sm" aria-controls="dataTable"
+                                placeholder="Search"></label></div>
                 </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -59,13 +66,13 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                             $ponto = rand(1, 1000);
                             $rf_id = $user['id'];
                             echo ('<tr>
-                                <td>' . $rf_id . '</td>
+                                <td data-id="'. $user['id'] .'">' . $user['rf_id'] . '</td>
                                 <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">' . $user['nome'] . '</td>
                                 <td>' . $user['email'] . '</td>
                                 <td>' . $user['email_recuperacao'] . '</td>
                                 <td>' . $ponto . '</td>
                                 <td>
-                                    <button class="btn btn-info btn-sm editBtn" data-id="' . $rf_id . '" style="
+                                    <button class="btn btn-info btn-sm editBtn" data-id="' . $user['id'] . '"  style="
                                             background-color: #4FB8FC;
                                             color: #fff;">Editar</button>
                                     <button class="btn btn-danger btn-sm deleteBtn" data-toggle="modal" data-target="#deleteModal" data-id="' . $user['id'] . '" >Deletar</button>
@@ -78,7 +85,9 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
             </div>
             <div class="row">
                 <div class="col-md-6 align-self-center">
-                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando de <?php echo ($inicio + 1) ?> à <?php echo min($inicio + $registros_por_pagina, $total_registros) ?> de <?php echo ($total_registros) ?></p>
+                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrando
+                        de <?php echo ($inicio + 1) ?> à <?php echo min($inicio + $registros_por_pagina, $total_registros) ?>
+                        de <?php echo ($total_registros) ?></p>
                 </div>
                 <div class="col-md-6">
                     <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
@@ -115,9 +124,10 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 </div>
             </div>
         </div>
-        
 
-        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="deleteModal">
+
+        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true" id="deleteModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -135,7 +145,38 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 </div>
             </div>
         </div>
-        
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Editar Usuário</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm" action="edit_user.php" method="post">
+                            <input type="text" hidden id="editUserId" name="id" value="">
+                            <div class="mb-3">
+                                <label for="editUserName" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="editUserName" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editUserEmail" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="editUserEmail" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editUserRecuperationEmail" class="form-label">E-mail de Recuperação</label>
+                                <input type="email" class="form-control" id="editUserRecuperationEmail" name="email_recuperacao" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editUserRFID" class="form-label">RF_ID</label>
+                                <input type="text" class="form-control" id="editUserRFID" name="rf_id" required disabled>
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="edit_user">Salvar mudanças</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -166,6 +207,22 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     }
                 });
             }
+            $(document).on('click', '.editBtn', function() {
+                var userId = $(this).data('id');
+                var userRF_ID = $(this).closest('tr').find('td:eq(0)').text();
+                var userName = $(this).closest('tr').find('td:eq(1)').text(); // Nome na coluna 2
+                var userEmail = $(this).closest('tr').find('td:eq(2)').text();
+                var userRecuperation = $(this).closest('tr').find('td:eq(3)').text(); // E-mail na coluna 3
+
+                $('#editUserId').val(userId);
+                $('#editUserRFID').val(userRF_ID);
+                $('#editUserName').val(userName);
+                $('#editUserEmail').val(userEmail);
+                $('#editUserRecuperationEmail').val(userRecuperation);
+
+                $('#editModal').modal('show');
+            });
+
             $(document).on('click', '.deleteBtn', function() {
                 var userId = $(this).data('id');
                 $('#delete_data').attr('value', userId);

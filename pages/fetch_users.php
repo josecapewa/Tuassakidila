@@ -15,7 +15,7 @@ foreach ($users as $user) {
     $ponto = rand(1, 1000);
     $rf_id = $user['id'];
     echo ('<tr>
-        <td>' . $rf_id . '</td>
+        <td>' . $user['rf_id'] . '</td>
         <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">' . $user['nome'] . '</td>
         <td>' . $user['email'] . '</td>
         <td>' . $user['email_recuperacao'] . '</td>
