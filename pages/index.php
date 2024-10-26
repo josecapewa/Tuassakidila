@@ -12,7 +12,7 @@
 									<div class="row g-0 align-items-center">
 										<div class="col me-2">
 											<div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>GANHOS (DIÁRIOS)</span></div>
-											<div class="text-dark fw-bold h5 mb-0"><span>$40,000</span></div>
+											<div class="text-dark fw-bold h5 mb-0"><span>400Kz</span></div>
 										</div>
 										<div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
 									</div>
@@ -25,7 +25,7 @@
 									<div class="row g-0 align-items-center">
 										<div class="col me-2">
 											<div class="text-uppercase text-success fw-bold text-xs mb-1"><span>GANHOS (SEMANAIS)</span></div>
-											<div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
+											<div class="text-dark fw-bold h5 mb-0"><span>215,000Kz</span></div>
 										</div>
 										<div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
 									</div>

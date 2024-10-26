@@ -67,7 +67,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                             $rf_id = $user['id'];
                             echo ('<tr>
                                 <td data-id="'. $user['id'] .'">' . $user['rf_id'] . '</td>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">' . $user['nome'] . '</td>
+                                <td><img class="rounded-circle me-2" width="30" height="30" src="../uploads/' . $user['imagem'] . '">' . $user['nome'] . '</td>
                                 <td>' . $user['email'] . '</td>
                                 <td>' . $ponto . '</td>
                                 <td>
@@ -161,10 +161,6 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                                 <input type="email" class="form-control" id="editUserEmail" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="editUserRecuperationEmail" class="form-label">E-mail de Recuperação</label>
-                                <input type="email" class="form-control" id="editUserRecuperationEmail" name="email_recuperacao" required>
-                            </div>
-                            <div class="mb-3">
                                 <label for="editUserRFID" class="form-label">RF_ID</label>
                                 <input type="text" class="form-control" id="editUserRFID" name="rf_id" required disabled>
                             </div>
@@ -209,13 +205,11 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 var userRF_ID = $(this).closest('tr').find('td:eq(0)').text();
                 var userName = $(this).closest('tr').find('td:eq(1)').text(); // Nome na coluna 2
                 var userEmail = $(this).closest('tr').find('td:eq(2)').text();
-                var userRecuperation = $(this).closest('tr').find('td:eq(3)').text(); // E-mail na coluna 3
 
                 $('#editUserId').val(userId);
                 $('#editUserRFID').val(userRF_ID);
                 $('#editUserName').val(userName);
                 $('#editUserEmail').val(userEmail);
-                $('#editUserRecuperationEmail').val(userRecuperation);
 
                 $('#editModal').modal('show');
             });

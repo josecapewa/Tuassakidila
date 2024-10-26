@@ -73,9 +73,9 @@ class Media {
     }
 
     public function user_image_destroy($id) {
-        $image = $this->find('user', $id);
-        if ($image && $image['image'] !== 'no_image.jpg') {
-            unlink($this->userPath . '/' . $image['image']);
+        $image = $this->find('usuario', $id);
+        if ($image && $image['imagem'] !== 'no_image.jpg') {
+            unlink($this->userPath . '/' . $image['imagem']);
         }
         return true;
     }
