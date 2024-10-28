@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+.card-servico {
+    width: 280px;
+    height: 360px;
+    min-height: max-content;
+    border-top: 8px solid #027d51;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+ 
+}
+
+
+.button-converter {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #027d51;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+

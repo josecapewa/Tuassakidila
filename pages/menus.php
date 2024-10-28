@@ -5,25 +5,27 @@ $user = getUser($_SESSION['user_id']);
 
 <body id="page-top">
 	<div id="wrapper">
-		<nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="color: rgb(20,200,138);background: #027d51;">
-			<div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-					<div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-					<div class="sidebar-brand-text mx-3"><span>Tuassakidila</span></div>
-				</a>
-				<hr class="sidebar-divider my-0">
-				<ul class="navbar-nav text-light" id="accordionSidebar">
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Início</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Perfil</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'table.php') ? 'active' : ''; ?>" href="table.php"><i class="fas fa-table"></i><span>Trocas</span></a></li>
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>" href="users.php"><i class="fas fa-users"></i><span>Usuários</span></a></li>
-
-					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'register.php') ? 'active' : ''; ?>" href="register.php"><i class="fas fa-user-circle"></i><span>Registrar</span></a></li>
-				</ul>
-				<div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
-			</div>
-		</nav>
+			<nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="color: rgb(20,200,138);background: #027d51;">
+				<div class="container-fluid d-flex flex-column p-0 mt-4" style="flex-wrap:nowrap;"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.php" style="justify-content: center;">
+						<div>
+							<div><img src="./assets/img/logo_tuassa_white.png" alt="logo-tuassakidila" width="90px" height="90px"></div>
+							<div class="sidebar-brand-text"><span>Tuassakidila</span></div>
+							<br>
+							<br>
+						</div>
+					</a>
+					<hr class="sidebar-divider my-0">
+					<ul class="navbar-nav text-light" id="accordionSidebar">
+						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Início</span></a></li>
+						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'servicos.php') ? 'active' : ''; ?>" href="servicos.php"><i class="fa fa-hammer"></i><span>Trocas</span></a></li>
+						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>" href="users.php"><i class="fas fa-users"></i><span>Usuários</span></a></li>
+					</ul>
+					<div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+				</div>
+			</nav>
 		<div class="d-flex flex-column" id="content-wrapper">
-			<div id="content">
+			<div id="content"> <!-- header -->
 				<nav class=" navbar navbar-expand bg-white shadow mb-4 topbar">
 					<div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
 						<form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">

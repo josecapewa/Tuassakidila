@@ -144,7 +144,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
         </div>
         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-content" style="box-shadow: -2px 4px 13px 7px #0000007d;">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editModalLabel">Editar Usuário</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
