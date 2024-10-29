@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         echo "Erro ao enviar o arquivo. Verifique o tamanho do arquivo e tente novamente.";
         $session->msg("d", "Erro ao enviar o arquivo. Verifique o tamanho do arquivo e tente novamente.");
     }
-    }
+}
 
 
 ?>
@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
-        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade" data-bs-backdrop="static" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true" id="imageModal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -210,13 +210,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                     </div>
 
                     <form class="form" method="post" enctype="multipart/form-data">
-                        <div class="modal-body mx-auto">
-
+                        <div class="modal-body text-center">
                             <input class="form-control form-control-lg" id="file_upload" name="file_upload" type="file" style="display: none;" accept="image/*">
-                            <button type="button" class="btn bnt-sm btn-primary" onclick="document.getElementById('file_upload').click();">
-                                Selecionar arquivo
-                            </button>
-                            <img id="preview" src="../uploads/<?php echo $user['imagem']; ?>" alt="Pré-visualização da Imagem" width="150" height="150">
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="document.getElementById('file_upload').click();">
+                                    Selecionar arquivo
+                                </button>
+                            </div>
+                            <img id="preview" src="../uploads/<?php echo htmlspecialchars($user['imagem']); ?>" alt="Pré-visualização da Imagem" style="max-height: 80vh; max-width: 100%;">
 
                             <script>
                                 document.getElementById('file_upload').addEventListener('change', function(event) {
@@ -235,6 +236,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                                 });
                             </script>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-danger" name="submit">Confirmar</button>
