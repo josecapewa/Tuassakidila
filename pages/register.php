@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($password != $password_repeat) {
         echo "<script>alert('As senhas não coincidem!')</script>";
     }
-    $random = rand(0, 100);
+    $random = rand(0, 1000);
 
     if (isset($first_name) && isset($last_name) && isset($email) && isset($password) && isset($password_repeat)) {
         $name = $first_name . " " . $last_name;

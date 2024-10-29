@@ -43,11 +43,9 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form action="fetch_users.php" id="search_form" autocomplete="" onsubmit="return false">
-                        <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input
-                                    type="search" class="form-control form-control-sm" aria-controls="dataTable"
-                                    placeholder="Search" name="search" id="search_input"></label></div>
-                    </form>
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input
+                                type="search" class="form-control form-control-sm" aria-controls="dataTable"
+                                placeholder="Search"></label></div>
                 </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -56,6 +54,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                         <tr>
                             <th>Rf_Id</th>
                             <th>Nome</th>
+                            <th>Nível</th>
                             <th>E-mail</th>
                             <th>Pontos</th>
                             <th>Modificar</th>
@@ -67,8 +66,9 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                             $ponto = rand(1, 1000);
                             $rf_id = $user['id'];
                             echo ('<tr>
-                                <td data-id="'. $user['id'] .'">' . $user['rf_id'] . '</td>
-                                <td><img class="rounded-circle me-2" width="30" height="30" src="../uploads/'.$user['imagem'].'">' . $user['nome'] . '</td>
+                                <td data-id="' . $user['id'] . '">' . $user['rf_id'] . '</td>
+                                <td><img class="rounded-circle me-2 clickable-image" width="30" height="30" src="../uploads/' . $user['imagem'] . '" data-toggle="modal" data-target="#imageModal" data-img-src="../uploads/' . $user['imagem'] . '">' . $user['nome'] . '</td>
+                                <td>' .$user['level']. '</td>
                                 <td>' . $user['email'] . '</td>
                                 <td>' .$user['pontos']. '</td>
                                 <td>
@@ -145,7 +145,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
         </div>
         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content" style="box-shadow: -2px 4px 13px 7px #0000007d;">
+                <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editModalLabel">Editar Usuário</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -162,8 +162,11 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                                 <input type="email" class="form-control" id="editUserEmail" name="email" required>
                             </div>
                             <div class="mb-3">
-                                <label for="editUserRecuperationEmail" class="form-label">E-mail de Recuperação</label>
-                                <input type="email" class="form-control" id="editUserRecuperationEmail" name="email_recuperacao" required>
+                                <label for="editUserLevel" class="form-label">Nível de Usuário</label>
+                                <select class="form-select" id="editUserLevel" name="user_level" required>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Comum">Usuário Comum</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="editUserRFID" class="form-label">RF_ID</label>
@@ -176,12 +179,27 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
             </div>
         </div>
 
+        <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel">Pré-visualização da Imagem</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </button>
+                    </div>
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <img id="modal-image" src="" alt="Imagem" class="img-fluid" style="max-height: 80vh; max-width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             function changeRecordsPerPage() {
                 var recordsPerPage = $('#recordsPerPage').val();
-                loadUsers(1, recordsPerPage); // Reset to page 1
+                loadUsers(1, recordsPerPage);
             }
 
             $(document).on('click', '.pagination .page-link', function(e) {
@@ -193,7 +211,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
 
             function loadUsers(page, recordsPerPage) {
                 $.ajax({
-                    url: 'fetch_users.php', // New PHP file to handle the AJAX request
+                    url: 'fetch_users.php',
                     type: 'GET',
                     data: {
                         pagina: page,
@@ -201,24 +219,30 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     },
                     success: function(data) {
                         $('#userTable tbody').html(data);
-                        // Update pagination or other info if needed
                     }
                 });
             }
             $(document).on('click', '.editBtn', function() {
                 var userId = $(this).data('id');
                 var userRF_ID = $(this).closest('tr').find('td:eq(0)').text();
-                var userName = $(this).closest('tr').find('td:eq(1)').text(); // Nome na coluna 2
-                var userEmail = $(this).closest('tr').find('td:eq(2)').text();
-                var userRecuperation = $(this).closest('tr').find('td:eq(3)').text(); // E-mail na coluna 3
+                var userName = $(this).closest('tr').find('td:eq(1)').text();
+                var userLevel = $(this).closest('tr').find('td:eq(2)').text();
+                var userEmail = $(this).closest('tr').find('td:eq(3)').text();
 
                 $('#editUserId').val(userId);
                 $('#editUserRFID').val(userRF_ID);
                 $('#editUserName').val(userName);
+                $('#editUserLevel').val(userLevel);
                 $('#editUserEmail').val(userEmail);
-                $('#editUserRecuperationEmail').val(userRecuperation);
 
                 $('#editModal').modal('show');
+            });
+
+            $(document).on('click', '.clickable-image', function() {
+                var imgSrc = $(this).data('img-src');
+                console.log(imgSrc);
+                $('#imageModal').modal('show');
+                $('#modal-image').attr('src', imgSrc);
             });
 
             $(document).on('click', '.deleteBtn', function() {
