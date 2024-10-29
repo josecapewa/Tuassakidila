@@ -12,7 +12,7 @@
 
             <?php
 
-            for ($i = 1; $i < 7; $i++) {
+            for ($i = 1; $i < 4; $i++) {
                 echo ('<div class="card-servico" style=" margin:10px 10px; "
                     onmouseover="this.style.transform="scale(1.07) translateY(-7px)"; this.style.boxShadow="0 12px 20px rgba(0, 0, 0, 0.2)";"
                     onmouseout="this.style.transform="scale(1)"; this.style.boxShadow="0 6px 12px rgba(0, 0, 0, 0.15)";">
@@ -21,6 +21,22 @@
                         Explore o melhor que oferecemos com recursos avançados e suporte dedicado para garantir uma experiência incomparável.
                     </p>
                     <button class="button-converter"
+                        onmouseover="this.style.backgroundColor="#147453";"
+                        onmouseout="this.style.backgroundColor="#027d51";">
+                        CONVERTER
+                    </button>
+                </div>');
+            }
+
+            for ($i = 4; $i < 7; $i++) {
+                echo ('<div class="card-servico" style=" margin:10px 10px; background-color: rgba(90, 87, 87, 0.521); border-top: 8px solid rgba(90, 87, 87, 0.521); "
+                    onmouseover="this.style.transform="scale(1.07) translateY(-7px)"; this.style.boxShadow="0 12px 20px rgba(0, 0, 0, 0.2)";"
+                    onmouseout="this.style.transform="scale(1)"; this.style.boxShadow="0 6px 12px rgba(0, 0, 0, 0.15)";">
+                    <h2 style="color: gray; font-size: 26px; margin: 0 0 10px; font-weight: bold; text-align: center;">Serviço Premium '.$GLOBAL[$i].'</h2>
+                    <p style="color: #555; font-size: 16px; text-align: center; line-height: 1.5; margin: 10px 0 20px;">
+                        Explore o melhor que oferecemos com recursos avançados e suporte dedicado para garantir uma experiência incomparável.
+                    </p>
+                    <button class="button-converter" style="background-color: rgba(90, 87, 87, 0.521);"
                         onmouseover="this.style.backgroundColor="#147453";"
                         onmouseout="this.style.backgroundColor="#027d51";">
                         CONVERTER

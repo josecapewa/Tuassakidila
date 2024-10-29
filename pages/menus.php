@@ -5,25 +5,25 @@ $user = getUser($_SESSION['user_id']);
 
 <body id="page-top">
 	<div id="wrapper">
-			<nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="color: rgb(20,200,138);background: #027d51;">
-				<div class="container-fluid d-flex flex-column p-0 mt-4" style="flex-wrap:nowrap;"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.php" style="justify-content: center;">
-						<div>
-							<div><img src="./assets/img/logo_tuassa_white.png" alt="logo-tuassakidila" width="90px" height="90px"></div>
-							<div class="sidebar-brand-text"><span>Tuassakidila</span></div>
-							<br>
-							<br>
-						</div>
-					</a>
-					<hr class="sidebar-divider my-0">
-					<ul class="navbar-nav text-light" id="accordionSidebar">
-						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Início</span></a></li>
-						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Perfil</span></a></li>
-						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'servicos.php') ? 'active' : ''; ?>" href="servicos.php"><i class="fa fa-hammer"></i><span>Trocas</span></a></li>
-						<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>" href="users.php"><i class="fas fa-users"></i><span>Usuários</span></a></li>
-					</ul>
-					<div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
-				</div>
-			</nav>
+		<nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="color: rgb(20,200,138);background: #027d51;">
+			<div class="container-fluid d-flex flex-column p-0 mt-4" style="flex-wrap:nowrap;"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.php" style="justify-content: center;">
+					<div style="padding-top: 50px;">
+						<div><img src="./assets/img/logo_tuassa_white.png" alt="logo-tuassakidila" width="60px" height="60px"></div>
+						<div class="sidebar-brand-text"><span>Tuassakidila</span></div>
+						<br>
+						<br>
+					</div>
+				</a>
+				<hr class="sidebar-divider mt-60">
+				<ul class="navbar-nav text-light" id="accordionSidebar">
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Início</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>" href="profile.php"><i class="fas fa-user"></i><span>Perfil</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'servicos.php') ? 'active' : ''; ?>" href="servicos.php"><i class="fa fa-hammer"></i><span>Trocas</span></a></li>
+					<li class="nav-item"><a class="nav-link <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>" href="users.php"><i class="fas fa-users"></i><span>Usuários</span></a></li>
+				</ul>
+				<div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+			</div>
+		</nav>
 		<div class="d-flex flex-column" id="content-wrapper">
 			<div id="content"> <!-- header -->
 				<nav class=" navbar navbar-expand bg-white shadow mb-4 topbar">
@@ -96,7 +96,7 @@ $user = getUser($_SESSION['user_id']);
 							<div class="d-none d-sm-block topbar-divider"></div>
 							<li class="nav-item dropdown no-arrow">
 								<div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo $user['nome'] ?></span><img class="border rounded-circle img-profile" src="../uploads/<?php echo $user['imagem']; ?>"></a>
-									<div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>Perfil</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>Definições</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>Registo de Actividades</a>
+									<div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>Perfil</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>Definições</a>
 										<div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>Logout</a>
 									</div>
 								</div>
