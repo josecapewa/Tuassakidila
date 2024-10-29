@@ -43,9 +43,11 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input
-                                type="search" class="form-control form-control-sm" aria-controls="dataTable"
-                                placeholder="Search"></label></div>
+                    <form action="fetch_users.php" id="search_form" autocomplete="" onsubmit="return false">
+                        <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input
+                                    type="search" class="form-control form-control-sm" aria-controls="dataTable"
+                                    placeholder="Search" name="search" id="search_input"></label></div>
+                    </form>
                 </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
