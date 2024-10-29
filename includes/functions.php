@@ -3,8 +3,8 @@ require_once('load.php');
 
 $GLOBAL['1'] = "Pontos para Dados";
 $GLOBAL['2'] = "Pontos para Voz e SMS";
-$GLOBAL['3'] = "Pontos para Viagens";
-$GLOBAL['4'] = "Pontos para Dinheiro";
+$GLOBAL['3'] = "Pontos para Dinheiro";
+$GLOBAL['4'] = "Pontos para Viagens";
 $GLOBAL['5'] = "Pontos para Alimentos";
 $GLOBAL['6'] = "Unitel Money";
 

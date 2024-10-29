@@ -13,6 +13,7 @@ $pagina_atual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 $inicio = ($pagina_atual - 1) * $registros_por_pagina;
 $total_paginas = ceil($total_registros / $registros_por_pagina);
 
+// Fetch users for the current page
 $users = array_slice($users, $inicio, $registros_por_pagina);
 ?>
 <?php include("menus.php") ?>
@@ -67,12 +68,12 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                             $ponto = rand(1, 1000);
                             $rf_id = $user['id'];
                             echo ('<tr>
-                                <td data-id="' . $user['id'] . '">' . $user['rf_id'] . '</td>
-                                <td><img class="rounded-circle me-2 clickable-image" width="30" height="30" src="../uploads/' . $user['imagem'] . '" data-toggle="modal" data-target="#imageModal" data-img-src="../uploads/' . $user['imagem'] . '">' . $user['nome'] . '</td>
+                                <td data-id="'. $user['id'] .'">' . $user['rf_id'] . '</td>
+                                <td><img class="rounded-circle me-2" width="30" height="30" src="../uploads/'.$user['imagem'].'">' . $user['nome'] . '</td>
                                 <td>' . $user['email'] . '</td>
-                                <td>' . $ponto . '</td>
+                                <td>' .$user['pontos']. '</td>
                                 <td>
-                                    <button class="btn btn-sm btnE editBtn" data-id="' . $rf_id . '">Editar</button>
+                                    <button class="btn btn-sm btnE editBtn" data-id="' . $user['id'] . '">Editar</button>
                                     <button class="btn btn-sm btn-danger deleteBtn btnD" data-toggle="modal" data-target="#deleteModal" data-id="' . $user['id'] . '">Deletar</button>
                                 </td>
                             </tr>');
@@ -162,6 +163,10 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                                 <input type="email" class="form-control" id="editUserEmail" name="email" required>
                             </div>
                             <div class="mb-3">
+                                <label for="editUserRecuperationEmail" class="form-label">E-mail de Recuperação</label>
+                                <input type="email" class="form-control" id="editUserRecuperationEmail" name="email_recuperacao" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="editUserRFID" class="form-label">RF_ID</label>
                                 <input type="text" class="form-control" id="editUserRFID" name="rf_id" required disabled>
                             </div>
@@ -172,27 +177,12 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
             </div>
         </div>
 
-        <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="imageModalLabel">Pré-visualização da Imagem</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </button>
-                    </div>
-                    <div class="modal-body d-flex justify-content-center align-items-center">
-                        <img id="modal-image" src="" alt="Imagem" class="img-fluid" style="max-height: 80vh; max-width: 100%;">
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             function changeRecordsPerPage() {
                 var recordsPerPage = $('#recordsPerPage').val();
-                loadUsers(1, recordsPerPage);
+                loadUsers(1, recordsPerPage); // Reset to page 1
             }
 
             $(document).on('click', '.pagination .page-link', function(e) {
@@ -204,7 +194,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
 
             function loadUsers(page, recordsPerPage) {
                 $.ajax({
-                    url: 'fetch_users.php',
+                    url: 'fetch_users.php', // New PHP file to handle the AJAX request
                     type: 'GET',
                     data: {
                         pagina: page,
@@ -212,28 +202,24 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                     },
                     success: function(data) {
                         $('#userTable tbody').html(data);
+                        // Update pagination or other info if needed
                     }
                 });
             }
             $(document).on('click', '.editBtn', function() {
                 var userId = $(this).data('id');
                 var userRF_ID = $(this).closest('tr').find('td:eq(0)').text();
-                var userName = $(this).closest('tr').find('td:eq(1)').text();
+                var userName = $(this).closest('tr').find('td:eq(1)').text(); // Nome na coluna 2
                 var userEmail = $(this).closest('tr').find('td:eq(2)').text();
+                var userRecuperation = $(this).closest('tr').find('td:eq(3)').text(); // E-mail na coluna 3
 
                 $('#editUserId').val(userId);
                 $('#editUserRFID').val(userRF_ID);
                 $('#editUserName').val(userName);
                 $('#editUserEmail').val(userEmail);
+                $('#editUserRecuperationEmail').val(userRecuperation);
 
                 $('#editModal').modal('show');
-            });
-
-            $(document).on('click', '.clickable-image', function() {
-                var imgSrc = $(this).data('img-src');
-                console.log(imgSrc);
-                $('#imageModal').modal('show');
-                $('#modal-image').attr('src', imgSrc);
             });
 
             $(document).on('click', '.deleteBtn', function() {
