@@ -14,12 +14,20 @@ $inicio = ($pagina_atual - 1) * $registros_por_pagina;
 $total_paginas = ceil($total_registros / $registros_por_pagina);
 
 $users = array_slice($users, $inicio, $registros_por_pagina);
+
+if (isset($_SESSION['msg'])) {
+    echo "<script>
+        document.getElementById('mostrarToast').click();
+        alert('MEnsagem')
+    </script>";
+}
 ?>
 <?php include("menus.php") ?>
 <link rel="stylesheet" href="../estilo.css">
 <div class="container-fluid ">
     <link rel="stylesheet" href="./assets/css/styles.min.css">
     <h3 class="text-dark mb-4">Usuários</h3>
+    <?php echo display_msg($msg) ?>
     <div class="card shadow">
         <div class="card-header py-3">
             <p class="text-primary m-0 fw-bold">Informações de Usuários</p>
@@ -69,7 +77,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                             echo ('<tr>
                                 <td data-id="' . $user['id'] . '">' . $user['rf_id'] . '</td>
                                 <td><img class="rounded-circle me-2 clickable-image" width="30" height="30" src="../uploads/' . $user['imagem'] . '" data-toggle="modal" data-target="#imageModal" data-img-src="../uploads/' . $user['imagem'] . '">' . $user['nome'] . '</td>
-                                <td>' .$user['level']. '</td>
+                                <td>' . $user['level'] . '</td>
                                 <td>' . $user['email'] . '</td>
                                 <td>' . $user['pontos'] . '</td>
                                 <td>
@@ -252,5 +260,6 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                 $('#deleteModal').modal('show');
             });
         </script>
+        <div style="display:flex; justify-content:center"><button id="mostrarToast">Mostrar Toast</button></div>
 
         <?php include("footer.php") ?>

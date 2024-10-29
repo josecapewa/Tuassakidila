@@ -8,6 +8,14 @@ $GLOBAL['4'] = "Pontos para Viagens";
 $GLOBAL['5'] = "Pontos para Alimentos";
 $GLOBAL['6'] = "Unitel Money";
 
+
+function first_character($str)
+{
+    $val = str_replace('-', " ", $str);
+    $var = ucfirst($val);
+    return $val;
+}
+
 function getUser($user_id)
 {
     global $db;
@@ -27,39 +35,55 @@ function getData($table)
     return $set_results;
 }
 
-function current_user(){
+function current_user()
+{
     static $current_user;
     global $db;
-    if(isset($_SESSION['user_id'])):
+    if (isset($_SESSION['user_id'])):
         $user_id = $_SESSION['user_id'];
         $sql = $db->query("SELECT * FROM usuario WHERE id=$user_id LIMIT 1");
-        if($result = $db->fetch_assoc($sql))
+        if ($result = $db->fetch_assoc($sql))
             $current_user = $result;
         else
             return null;
-      endif;
-      
+    endif;
+
     return $current_user;
 }
 
 function find_by_groupLevel($level)
-  {
+{
     global $db;
     $sql = "SELECT level_name FROM user_level WHERE level_name = '$level' LIMIT 1 ";
     $result = $db->query($sql);
-    return($db->num_rows($result) === 0 ? true : false);
-  }
+    return ($db->num_rows($result) === 0 ? true : false);
+}
 
-function page_require_level($require_level){
+function page_require_level($require_level)
+{
     global $session;
     $current_user = current_user();
     $login_level = find_by_groupLevel($current_user['user_level']);
     if (!$session->isUserLoggedIn(true)):
         header("Location: home.php");
-    elseif($current_user['user_level'] <= (int)$require_level):
-             return true;
-     else:
+    elseif ($current_user['user_level'] <= (int)$require_level):
+        return true;
+    else:
         header("Location: home.php");
-       endif;
+    endif;
+}
 
+function display_msg($msg = ''){
+    $output = array();
+    if(!empty($msg) && is_array($msg)){
+        foreach($msg as $key => $value){
+            $output = "<div id=\"toast\" class=\"toast\">";
+            $output .= "<div class=\"bg-{$key}\" style=\"display:flex; justify-content:center; margin:auto; width:30%; border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); padding:15px\">";
+            $output .= first_character($value);
+            $output .= "</div></div>";
+        }
+        return $output;
+    } else {
+        return "";
     }
+}

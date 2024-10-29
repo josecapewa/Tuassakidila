@@ -14,7 +14,6 @@
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
  
 }
 
@@ -28,7 +27,6 @@
     font-size: 18px;
     font-weight: bold;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 

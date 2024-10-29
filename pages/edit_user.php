@@ -9,6 +9,7 @@
         if(!empty($email) && !empty($name) && !empty($user_level)){
             $sql = "UPDATE usuario SET nome = '$name', email = '$email', level = '$user_level' WHERE id = $id";
             if($db->query($sql)){
+                $session->msg('s', "usuário atualizado com sucesso");
                 header("Location: users.php");
             } else {
                 echo "Erro ao atualizar o usuário.";
