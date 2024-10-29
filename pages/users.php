@@ -13,7 +13,6 @@ $pagina_atual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 $inicio = ($pagina_atual - 1) * $registros_por_pagina;
 $total_paginas = ceil($total_registros / $registros_por_pagina);
 
-// Fetch users for the current page
 $users = array_slice($users, $inicio, $registros_por_pagina);
 ?>
 <?php include("menus.php") ?>

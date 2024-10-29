@@ -1,5 +1,6 @@
 <?php
 include("head.php");
+if(!$session->isUserLoggedIn(true)) { header("Location: login.php"); };
 $user = getUser($_SESSION['user_id']);
 ?>
 
