@@ -32,3 +32,23 @@
     transition: background-color 0.3s ease;
 }
 
+#toast {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: transparent ;
+    color: #fff;
+    margin-top: 10px;
+    z-index: 10;
+    border-style: none;
+    box-shadow: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

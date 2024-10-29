@@ -16,6 +16,7 @@ $total_paginas = ceil($total_registros / $registros_por_pagina);
 $users = array_slice($users, $inicio, $registros_por_pagina);
 ?>
 <?php include("menus.php") ?>
+<link rel="stylesheet" href="../estilo.css">
 <div class="container-fluid ">
     <link rel="stylesheet" href="./assets/css/styles.min.css">
     <h3 class="text-dark mb-4">Usuários</h3>
@@ -70,7 +71,7 @@ $users = array_slice($users, $inicio, $registros_por_pagina);
                                 <td><img class="rounded-circle me-2 clickable-image" width="30" height="30" src="../uploads/' . $user['imagem'] . '" data-toggle="modal" data-target="#imageModal" data-img-src="../uploads/' . $user['imagem'] . '">' . $user['nome'] . '</td>
                                 <td>' .$user['level']. '</td>
                                 <td>' . $user['email'] . '</td>
-                                <td>' .$user['pontos']. '</td>
+                                <td>' . $user['pontos'] . '</td>
                                 <td>
                                     <button class="btn btn-sm btnE editBtn" data-id="' . $user['id'] . '">Editar</button>
                                     <button class="btn btn-sm btn-danger deleteBtn btnD" data-toggle="modal" data-target="#deleteModal" data-id="' . $user['id'] . '">Deletar</button>
