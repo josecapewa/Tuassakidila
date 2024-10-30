@@ -48,21 +48,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 ?>
 
 <?php include("menus.php") ?>
+<link rel="stylesheet" href="../estilo.css">
 <div class="container-fluid">
     <h3 class="text-dark mb-4">Perfil</h3>
     <div class="row mb-3">
         <div class="col-lg-4">
-            <div class="card mb-3 py-3">
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
-                        src="../uploads/<?php echo $user['imagem']; ?>" width="160"
-                        height="160">
-                    <div class="mt-3 mb-3">
-                        <div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <p class="text-primary fw-bold m-0">Foto de Perfil</p>
+                </div>
+                <div class="card-body text-center shadow" style="display: flex; flex-direction:column; justify-content:center; align-items:center;">
+
+                    <nav class="imagem" style="background-image: url('../uploads/<?php echo $user['imagem']; ?>');"></nav>
+
+                    <div class="mt-4 mb-3">
                             <button type="button" class="btn btn-sm btn-primary changeImage">
                                 Alterar foto
                             </button>
-                        </div>
-                        </script>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 <div class="card-header py-3">
                     <h6 class="text-primary fw-bold m-0">Pontuação Actual</h6>
                 </div>
-                <div class="card-body" style="height: 274px" >
+                <div class="card-body" style="height: 274px">
                     <article style="display: flex; justify-content:center; align-items:center; height:100%">
                         <h5 class="caixa-point fs-1"><?php echo $user['pontos'] ?></h5>
                     </article>
@@ -115,7 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                                     </div>
                                 </div>
                                 <div class="mt-3 mb-3"><button class="btn btn-primary btn-sm"
-                                        type="submit" name="save_data">Salvar alterações</button></div>
+                                        type="submit" name="save_data">Salvar alterações</button>
+                                </div>
                             </form>
                         </div>
                     </div>
