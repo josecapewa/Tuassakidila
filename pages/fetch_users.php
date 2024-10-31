@@ -15,13 +15,14 @@ foreach ($users as $user) {
     $ponto = rand(1, 1000);
     $rf_id = $user['id'];
     echo ('<tr>
-        <td>' . $user['rf_id'] . '</td>
-        <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">' . $user['nome'] . '</td>
+        <td data-id="' . $user['id'] . '">' . $user['rf_id'] . '</td>
+        <td><img class="rounded-circle me-2 clickable-image" width="30" height="30" src="../uploads/' . $user['imagem'] . '" data-toggle="modal" data-target="#imageModal" data-img-src="../uploads/' . $user['imagem'] . '">' . $user['nome'] . '</td>
+        <td>' . $user['level'] . '</td>
         <td>' . $user['email'] . '</td>
-        <td>' . $ponto . '</td>
+        <td>' . $user['pontos'] . '</td>
         <td>
-            <button class="btn btnE btn-sm editBtn" data-id="' . $rf_id . '"">Editar</button>
-            <button class="btn btn-danger btn-sm deleteBtn btnD" data-id="' . $rf_id . '">Deletar</button>
+            <button class="btn btn-sm btnE editBtn" data-id="' . $user['id'] . '">Editar</button>
+            <button class="btn btn-sm btn-danger deleteBtn btnD" data-toggle="modal" data-target="#deleteModal" data-id="' . $user['id'] . '">Deletar</button>
         </td>
     </tr>');
 }

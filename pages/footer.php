@@ -20,10 +20,6 @@
                     			$("#toast").fadeIn(500).delay(3000).fadeOut(500);
                     		});
                     	});
-						document.getElementById("mostrarToast").addEventListener('click', function () {
-							
-							$("#toast").fadeIn(500).delay(3000).fadeOut(500);
-						})
                     </script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -15,19 +15,20 @@ $total_paginas = ceil($total_registros / $registros_por_pagina);
 
 $users = array_slice($users, $inicio, $registros_por_pagina);
 
-if (isset($_SESSION['msg'])) {
-    echo "<script>
-        document.getElementById('mostrarToast').click();
-        alert('MEnsagem')
-    </script>";
-}
 ?>
+<script>
+    $(document).ready(function() {
+        <?php if (!empty($msg)): ?>
+            $("#toast").fadeIn(500).delay(3000).fadeOut(500);
+        <?php endif; ?>
+        alert("Hello! I am an alert box!!");
+    });
+</script>
 <?php include("menus.php") ?>
 <link rel="stylesheet" href="../estilo.css">
 <div class="container-fluid ">
     <link rel="stylesheet" href="./assets/css/styles.min.css">
     <h3 class="text-dark mb-4">Usuários</h3>
-    <?php echo display_msg($msg) ?>
     <div class="card shadow">
         <div class="card-header py-3">
             <p class="text-primary m-0 fw-bold">Informações de Usuários</p>

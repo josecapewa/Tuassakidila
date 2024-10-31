@@ -22,26 +22,24 @@ if (isset($_POST['save_contact']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_SESSION['user_id'];
 }
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $photo = new Media();
     if (isset($_FILES['file_upload']) && $_FILES['file_upload']['error'] === UPLOAD_ERR_OK) {
         $user_id = (int)$_POST['user_id'];
         try {
             if ($photo->upload($_FILES['file_upload']) && $photo->process_user($user_id)) {
-                echo "Foto atualizada com sucesso!";
-                $session->msg("d", "Falha ao atualizar a foto.");
-            } else {
-                echo "Foto atualizada com sucesso!";
                 $session->msg("s", "Foto atualizada com sucesso!");
+            } else {
+                $session->msg("d", "Falha ao atualizar a foto.");
             }
         } catch (RuntimeException $e) {
-            echo "Erro: " . $e->getMessage();
             $session->msg("d", "Erro: " . $e->getMessage());
         }
     } else {
-        echo "Erro ao enviar o arquivo. Verifique o tamanho do arquivo e tente novamente.";
         $session->msg("d", "Erro ao enviar o arquivo. Verifique o tamanho do arquivo e tente novamente.");
     }
+    header("Location: profile.php");
 }
 
 

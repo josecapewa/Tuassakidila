@@ -1,9 +1,10 @@
 @charset 'UTF-8';
 
 .card-servico {
-    width: 280px;
-    height: 360px;
-    min-height: max-content;
+    max-width: 280px;
+    max-height: 360px;
+    width: 100%;
+    height: 100%;
     border-top: 8px solid #027d51;
     border-radius: 10px;
     padding: 20px;
@@ -14,9 +15,17 @@
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
- 
 }
 
+.card-servico-desab {
+    margin: 10px 10px;
+    background-color: rgba(90, 87, 87, 0.521);
+    border-top: 8px solid rgba(90, 87, 87, 0.521);
+}
+
+button {
+    margin: 4px;
+}
 
 .button-converter {
     width: 100%;
@@ -30,6 +39,11 @@
     transition: background-color 0.3s ease;
 }
 
+.button-converter-desab {
+    background-color: rgba(90, 87, 87, 0.521);
+    color: rgba(90, 87, 87, 0.521)
+}
+
 #toast {
     display: none;
     position: fixed;
@@ -37,7 +51,7 @@
     left: 0;
     width: 100%;
     text-align: center;
-    background-color: transparent ;
+    background-color: transparent;
     color: #fff;
     margin-top: 10px;
     z-index: 10;

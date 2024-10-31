@@ -3,7 +3,7 @@ require_once('load.php');
 
 $GLOBAL['1'] = "Pontos para Dados";
 $GLOBAL['2'] = "Pontos para Voz e SMS";
-$GLOBAL['3'] = "Pontos para Dinheiro";
+$GLOBAL['3'] = "Pontos para Kwanzas";
 $GLOBAL['4'] = "Pontos para Viagens";
 $GLOBAL['5'] = "Pontos para Alimentos";
 $GLOBAL['6'] = "Unitel Money";
@@ -30,6 +30,26 @@ function getData($table)
 {
     global $db;
     $sql = "SELECT * FROM $table";
+    $result = $db->query($sql);
+    $set_results = $db->while_loop($result);
+    return $set_results;
+}
+
+function getTrocaServico()
+{
+    global $db;
+    $sql = "SELECT t.*, s.nome AS nome_servico 
+    FROM trocas t 
+    JOIN servicos s ON t.id_servico = s.id";
+    $result = $db->query($sql);
+    $set_results = $db->while_loop($result);
+    return $set_results;
+}
+
+function getDataWhere($table, $condition)
+{
+    global $db;
+    $sql = "SELECT * FROM $table WHERE $condition";
     $result = $db->query($sql);
     $set_results = $db->while_loop($result);
     return $set_results;
@@ -73,17 +93,31 @@ function page_require_level($require_level)
     endif;
 }
 
-function display_msg($msg = ''){
-    $output = array();
-    if(!empty($msg) && is_array($msg)){
-        foreach($msg as $key => $value){
-            $output = "<div id=\"toast\" class=\"toast\">";
-            $output .= "<div class=\"bg-{$key}\" style=\"display:flex; justify-content:center; margin:auto; width:30%; border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); padding:15px\">";
+function display_msg($msg = '') {
+    $output = ''; 
+    if (!empty($msg) && is_array($msg)) {
+        foreach ($msg as $key => $value) {
+            $output = "<div class=\"alert alert-{$key}\">";
+            $output .= "<a href=\"#\" class=\"btn-close me-3\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></a>";
             $output .= first_character($value);
-            $output .= "</div></div>";
+            $output .= "</div>";
         }
-        return $output;
-    } else {
-        return "";
     }
+    return $output; // Retorne o resultado acumulado
 }
+
+
+// function display_msg($msg = ''){
+//     $output = array();
+//     if(!empty($msg) && is_array($msg)){
+//         foreach($msg as $key => $value){
+//             $output = "<div id=\"toast\" class=\"toast\">";
+//             $output .= "<div class=\"bg-{$key}\" style=\"display:flex; justify-content:center; margin:auto; width:30%; border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); padding:15px\">";
+//             $output .= first_character($value);
+//             $output .= "</div></div>";
+//         }
+//         return $output;
+//     } else {
+//         return "";
+//     }
+// }
