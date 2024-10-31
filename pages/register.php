@@ -75,6 +75,24 @@ include("head.php");
                                 <div class="mb-3"><input class="form-control" style="border-radius: 10px; height:40px" type="email"
                                         aria-describedby="recuperationEmailHelp" placeholder="Email de Recuperação"
                                         name="recuperation_email"></div>
+
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" style="border-radius: 10px; height:40px"
+                                            type="text" id="exampleFirstName" placeholder="Bairro, Rua, Casa*"
+                                            name="endereco" required></div>
+                                    <div class="col-sm-6"><input class="form-control" style="border-radius: 10px; height:40px" type="text"
+                                            id="exampleLastName" placeholder="Município*"
+                                            name="municipio" required></div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" style="border-radius: 10px; height:40px"
+                                            type="text" id="exampleFirstName" placeholder="Província*"
+                                            name="provincia" required></div>
+                                    <div class="col-sm-6"><input class="form-control" style="border-radius: 10px; height:40px" type="text"
+                                            id="exampleLastName" placeholder="País*"
+                                            name="pais" required></div>
+                                </div>
+
                                 <div class="row mb-3">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" style="border-radius: 10px; height:40px"
                                             type="password" id="examplePasswordInput" placeholder="Password*"
@@ -82,24 +100,12 @@ include("head.php");
                                     <div class="col-sm-6"><input class="form-control" style="border-radius: 10px; height:40px" type="password"
                                             id="exampleRepeatPasswordInput" placeholder="Confirmar Password*"
                                             name="password_repeat" required></div>
-                                </div><button class="btn btn-primary d-block btn-user w-100" style="border-radius: 10px" type="submit">Registar Conta</button>
-                                <hr>
-                                <div style="display: flex; gap:10px; justify-content:center;">
-                                    <article>
-                                        <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2"
-                                            role="button" style="background: rgb(0,0,0); border-color:rgb(0,0,0); border-radius: 10px"><i
-                                                class="fab fa-google"></i>&nbsp; Login with Google</a>
-                                    </article>
-                                    <article>
-                                        <a
-                                            class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"
-                                            style="background: #3b5998; border-color:#3b5998; border-radius: 10px"><i class="fab fa-facebook-f"></i>&nbsp; Login
-                                            with Facebook</a>
-                                    </article>
                                 </div>
+                                <button class="btn btn-primary d-block btn-user w-100" style="border-radius: 10px" type="submit">Registar Conta</button>
+
                                 <hr>
                             </form>
-                            <div class="text-center"><a class="small"  style="text-decoration: none;" href="login.php">Já Possui ima Conta?
+                            <div class="text-center"><a class="small" style="text-decoration: none;" href="login.php">Já Possui ima Conta?
                                     Login!</a></div>
                         </div>
                     </div>

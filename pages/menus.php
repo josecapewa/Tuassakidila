@@ -4,6 +4,7 @@ if(!$session->isUserLoggedIn(true)) { header("Location: login.php"); };
 $user = current_user();
 ?>
 
+<link rel="stylesheet" href="../estilo.css">
 <body id="page-top">
 	<div id="wrapper">
 		<nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark" style="color: rgb(20,200,138);background: #027d51;">
@@ -56,7 +57,7 @@ $user = current_user();
 							</li>
 							<div class="d-none d-sm-block topbar-divider"></div>
 							<li class="nav-item dropdown no-arrow">
-								<div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo $user['nome'] ?></span><img class="border rounded-circle img-profile" src="../uploads/<?php echo $user['imagem']; ?>"></a>
+								<div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo $user['nome'] ?></span> <nav class="imagem border rounded-circle img-profile" style="background-image: url('../uploads/<?php echo $user['imagem']; ?>');"></nav></a>
 									<div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>Perfil</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>Definições</a>
 										<div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>Logout</a>
 									</div>
